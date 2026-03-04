@@ -1,0 +1,51 @@
+import random
+Rock ="""
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+"""
+Paper ="""
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+"""
+Scissors=""""
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+"""
+anim = [Rock,Paper,Scissors]
+
+choice =int(input("enter 0 for rock,1 for paper and 2 for scissors : "))
+if choice>=0 and choice<=2:
+    print(anim[choice])
+else:
+    print("Try again")
+com = random.randint(0,2 )
+print(anim[com])
+print(f"computer choice: {com}")
+if choice > 2:
+    print("Invalid input")
+elif choice == 0 and com == 2:
+    print("You win!!!")
+elif choice == 2 and com == 0:
+    print("you lose!")
+elif choice < com  :
+    print("You lose!")
+elif choice > com  :
+    print("you win!!!")
+elif choice == com :
+    print("its a draw... Try again....")
+elif choice > 2:
+    print("Invalid input")
+else:
+    print("Invalid input")
