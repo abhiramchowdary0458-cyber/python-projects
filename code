@@ -1,0 +1,90 @@
+import random
+HANGMANPICS = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''','''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''' ]
+words = ["aardvark","baboon","camel"]
+
+lives = 6
+word = random.choice(words)
+print(word)
+holder = ""
+for position in range(0, len(word)) :
+    holder += "_"
+print(holder)
+game_over = False
+correct_letters = []
+
+while not game_over:
+    guess = input("guess a letter: ").lower()
+
+    display = ""
+
+    for letter in word :
+        if guess == letter:
+            display += guess
+            correct_letters.append(guess)
+        elif letter in correct_letters:
+            display += letter
+        else :
+            display += "_"
+
+    print(display)
+
+    if guess not in word :
+        lives -= 1
+        if lives == 0:
+            game_over = True
+            print("You lose!!")
+
+    if "_" not in display :
+        game_over = True
+        print("You Win!!")
+
+    print(HANGMANPICS[lives])
